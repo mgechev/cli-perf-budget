@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isDate(obj: any) {
-    return false;
-  }
+  constructor(private el: ElementRef) {}
+
+  scroll$ = fromEvent(this.el.nativeElement, 'scroll');
 }

@@ -1,5 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { fromEvent } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,6 @@ import { fromEvent } from 'rxjs';
 export class AppComponent {
   constructor(private el: ElementRef) {}
 
-  scroll$ = fromEvent(this.el.nativeElement, 'scroll');
+  scroll$ = fromEvent(this.el.nativeElement, 'scroll')
+    .pipe(map((e: MouseEvent) => e.timeStamp));
 }
